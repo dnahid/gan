@@ -90,7 +90,7 @@ class DCGAN():
 
             # Second convolution layer
             # TODO: After 2d transpose convolution, the shape of x2 is 14*14*128
-            x2 =tf.layers.conv2d(x1,128,5,strides=2, padding='same')
+            x2 =tf.layers.conv2d_transpose(x1,128,5,strides=2, padding='same')
             x2 = tf.reshape(x2, (-1, 14, 14, 128))
             # TODO: Batch normalization of x2
             x2 =tf.layers.batch_normalization(x2, training=is_training,reuse=False)
@@ -99,7 +99,7 @@ class DCGAN():
 
             # Third convolution layer
             # TODO:2d transpose convolution as the second convolution layer, after that, the shape of x3 is 28*28*64
-            x3 =tf.layers.conv2d(x2,64,5,strides=2, padding='same')
+            x3 =tf.layers.conv2d_transpose(x2,64,5,strides=2, padding='same')
             x3 = tf.reshape(x3, (-1, 28, 28, 64))
             # Batch normalization of x3
             x3 =tf.layers.batch_normalization(x3, training=is_training,reuse=False)
